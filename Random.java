@@ -30,4 +30,8 @@ public class Random
       }//repeat this process b-1 times more to obtain a random sequence of length L of generating point-pushing homeomorphisms.
       System.out.println();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
