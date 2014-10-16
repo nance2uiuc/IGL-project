@@ -201,10 +201,10 @@ for reducible maps has been omitted.
 @return PF-eigenvalue of this
   */
  public double eigenPair(double v[]) {
-  if (!isIrreducible())
+  //if (!isIrreducible())
    //throw new RuntimeException("reducible matrix");
-    System.out.println("Reducible");
-  else System.out.println("Irreducible");
+    //System.out.println("Reducible");
+  //else System.out.println("Irreducible");
 
   reducedCharPoly();
   

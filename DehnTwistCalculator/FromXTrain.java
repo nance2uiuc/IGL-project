@@ -7,6 +7,10 @@ import java.io.StringReader;
 
 import pbj.math.graph.*;
 import pbj.math.graph.train.TrainTrack;
+import pbj.math.graph.train.*;
+import pbj.math.numerical.*;
+import gnu.getopt.*;
+import java.util.*;
 
 /*
  * This program will use Xtrain and extract the "stretch factor" or "dilatation" from the output in an automated way.
@@ -137,9 +141,15 @@ public class FromXTrain {
    TrainTrack tt = new TrainTrack(g);
    tt.trainTrackMap();
 
-   //   System.out.println(tt);
-   double q = tt.growthRate();
-   System.out.println("dilatation: "+q);
+   Gates gg;
+   gg=new Gates(tt);
+   if (gg.isPseudoAnosov()) {
+    System.out.println(IntMatrix.PFForm.format(tt.growthRate())
+      );
+   }
+   else
+    System.out.println(-1);
+
   }
   
  }
