@@ -11,7 +11,7 @@ import pbj.math.graph.train.*;
 import pbj.math.numerical.*;
 import gnu.getopt.*;
 import java.util.*;
-import DehnTwistCalculator.Stopwatch;
+import xtrain.Stopwatch;
 
 /*
  * This program will use Xtrain and extract the "stretch factor" or "dilatation" from the output in an automated way.

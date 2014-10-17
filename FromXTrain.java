@@ -11,7 +11,6 @@ import pbj.math.graph.train.*;
 import pbj.math.numerical.*;
 import gnu.getopt.*;
 import java.util.*;
-import DehnTwistCalculator.Stopwatch;
 
 /*
  * This program will use Xtrain and extract the "stretch factor" or "dilatation" from the output in an automated way.
@@ -51,8 +50,6 @@ public class FromXTrain {
       
   for(int j=0; j<s3; j++)
   {
-    Stopwatch time = new Stopwatch();
-    
       String w = "";
       
       for(int i=0; i<B; i++)
@@ -147,29 +144,26 @@ public class FromXTrain {
   //if it is a good map, dilatation is computed
    TrainTrack tt = new TrainTrack(g);
    //tt.trainTrackMap();
-   
    if (tt.trainTrackMap()) {
-   //System.err.println("");
-   //System.out.println(tt.toString());
+   System.err.println("");
+   System.out.println(tt.toString());
       
    Gates gg;
    gg=new Gates(tt);
    if (gg.isPseudoAnosov()) {
-    System.out.print("// Pseudo-Anosov Dilatation:"+IntMatrix.PFForm.format(tt.growthRate())
+    System.out.println("// Pseudo-Anosov Dilatation:"+IntMatrix.PFForm.format(tt.growthRate())
       );
    }
    else
-    System.out.print("// Non-pseudo-Anosov.");
+    System.out.println("// Non-pseudo-Anosov");
    
   }
    else {
-   System.out.print("// Map is not irreducible.");
+   System.out.println("// Map is not irreducible");
   }
-   double T = time.elapsedTime();
-   System.out.println(" // Time:"+T);
   }
   
-    
+  
  }
  
 
