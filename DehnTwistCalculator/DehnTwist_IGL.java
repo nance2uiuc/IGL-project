@@ -23,16 +23,14 @@ public class DehnTwist_IGL {
 				
 		boolean notEnd=true; //whether continue
 		String input;// the number from user
-		String INPUT;
 		String output;//Dehn Twist Output
 		String yesOrNo;//y or n
 		boolean valid=true;
 		
 		while(notEnd){
 			//get the number from user
-			System.out.println("Please enter in this form:[line]+[digit]+[L/R], e.g. \ns2, z2L, z3R, push(z3), y2R, y3L, push(y2) ...");
+			System.out.println("Please enter in this form:[line]+[digit]+[L/R], e.g. \ns2, z2L, z3R, push(z3), push(Z3), y2R, y3L, push(y2), push(Y2) ...");
 			input=TextIO.getlnString();       //lowercase input
-			INPUT=input.toUpperCase();        //UPPERCASE input
 			
 			//check whether the input is valid
 			valid=DehnTwist_IGL.validInput(input);
@@ -43,46 +41,8 @@ public class DehnTwist_IGL {
 			}
 			
 			else {
-				//which function we should call
+				output=call(input);
 				
-				//if the input is in the form "y3l", call y_l(s)
-				if (INPUT.charAt(0)=='Y'&&INPUT.charAt(2)=='L'){
-					output=y_l(input);
-				}
-				
-				//if the input is in the form "z2R", call z_r(s)
-				else if(INPUT.charAt(0)=='Z'&&INPUT.charAt(2)=='R'){
-					output=z_r(input);
-				}
-				//if the input is in the form "s2", call s_(str)
-				else if(INPUT.charAt(0)=='S'){
-					output=s_(input);
-				}
-				
-				//if the input is in the form of "z2l", call z_l(s)
-				else if(INPUT.charAt(0)=='Z'&&INPUT.charAt(2)=='L'){
-					output=z_l(input);
-				}
-				
-				//if the input is in the form of "y2r", call y_r(s);
-				else if(INPUT.charAt(0)=='Y'&&INPUT.charAt(2)=='R'){
-					output=y_r(input);
-				}
-				
-				//if the input is in the form of "push(z2)", call push_z(s);
-				else if(INPUT.indexOf("PUSH(Z")>=0){
-					output=push_z(input);////////////
-				}
-				
-				//if the input is in the form of "push(y2)", call push_y(s);
-				else if(INPUT.indexOf("PUSH(Y")>=0){
-					output=push_y(input);
-				}
-				
-				else {
-					output="Sorry, this part is not completed. Or, there is sth wrong. Contact me";
-				}
-			
 				System.out.println("Output: \n" +output);
 			}
 			//whether continue
@@ -103,6 +63,67 @@ public class DehnTwist_IGL {
 	
 		
 	}
+	/**
+	 * Decide which method we should call
+	 */
+	public static String call (String input){
+		//which function we should call
+		
+		///Output NEED TO BE CHECKED/???????????????????????????????????????????????????????????
+		//String output;
+		String INPUT=input.toUpperCase();
+		
+		//check the input, if it is in the form push(Y3) then..
+		if(input.contains("push(Y")) {
+			return Inverse.inverse(push_y(input));
+		}
+		
+		///Output NEED TO BE CHECKED????????????????????????????????????????
+		////check the input, if it is in the form push(Y3) then..
+		else if(input.contains("push(Z")){
+			return Inverse.inverse(push_z(input));
+		}
+		
+		//if the input is in the form "y3l", call y_l(s)
+		else if (INPUT.charAt(0)=='Y'&&INPUT.charAt(2)=='L'){
+			return y_l(input);
+		}
+		
+		//if the input is in the form "z2R", call z_r(s)
+		else if(INPUT.charAt(0)=='Z'&&INPUT.charAt(2)=='R'){
+			return z_r(input);
+		}
+		//if the input is in the form "s2", call s_(str)
+		else if(INPUT.charAt(0)=='S'){
+			return s_(input);
+		}
+		
+		//if the input is in the form of "z2l", call z_l(s)
+		else if(INPUT.charAt(0)=='Z'&&INPUT.charAt(2)=='L'){
+			return z_l(input);
+		}
+		
+		//if the input is in the form of "y2r", call y_r(s);
+		else if(INPUT.charAt(0)=='Y'&&INPUT.charAt(2)=='R'){
+			return y_r(input);
+		}
+		
+		//if the input is in the form of "push(z2)", call push_z(s);
+		else if(INPUT.indexOf("PUSH(Z")>=0){
+			return push_z(input);////////////
+		}
+		
+		//if the input is in the form of "push(y2)", call push_y(s);
+		else if(INPUT.indexOf("PUSH(Y")>=0){
+			return push_y(input);
+		}
+		
+		else {
+			return "Sorry, this part is not completed. Or, there is sth wrong. Contact me";
+		}
+	
+	}
+	
 	/**
 	 * This function is used to check whether the input is valid
 	 * All possible input: s2, z2L, z3R, push(z3), y2R, y3L, push(y2)...

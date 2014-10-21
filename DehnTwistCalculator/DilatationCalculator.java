@@ -7,6 +7,7 @@ import java.io.StringReader;
 
 import pbj.math.graph.*;
 import pbj.math.graph.train.TrainTrack;
+import pbj.math.numerical.IntMatrix;
 
 /*
  * This program will use Xtrain and extract the "stretch factor" or "dilatation" from the output in an automated way.
@@ -17,12 +18,19 @@ import pbj.math.graph.train.TrainTrack;
 //1. when you use this program, import XTrain source code in your eclipse as an existing project.
 //2. right click IGL_Project, click "properties", then "java build path". Choose "Projects" and add XTrain souce code that you imported.
 
-public class FromXTrain {
-
+public class DilatationCalculator {
+	/**
+	 * How many growthRate we have calculated
+	 */
+	static int count=0;
+	
+	public static void resetCount(){
+		count=0;
+	}
 	/*
 	 * This function will do the dehn twist by using Xtrain
 	 */
-	public static void main (String [] args) throws FileNotFoundException, IOException{
+	public static void main (String [] args) {
 		
 		//get the genus and twists
 		String [] s=new String [2];
@@ -31,12 +39,18 @@ public class FromXTrain {
 		System.out.println("Enter the twists, e.g. d0c0d1c1d2C2 ...");//better description??
 		s[1]=TextIO.getlnString();
 		
-		
+		GraphMap g=constructG(s);
+		dilatation(g);
 		//Use the program in XTrain: DehnTwist
-		DehnTwist.main(s);
+		//DehnTwist.main(s);
 		
 		//A GraphMap is contructed a the same time
 		//code from XTrain:DehnTwist.java
+	}
+	/**
+	 * Construct the graphMap
+	 */
+	public static GraphMap constructG(String [] s){ 
 		GraphMap g;
 		String a,lab,inp,tw;
 		int genus;
@@ -94,25 +108,43 @@ public class FromXTrain {
 					g=DehnTwist.twist(a,tw,lab);
 
 				inp=inp+a+" "+tw+" "+lab;
+				
 			}
-		} catch (Exception e) {System.err.println(e.toString());
-		return;}
+		} 
+		catch (Exception e) {
+			System.err.println(e.toString());
 		
+			return new GraphMap();
+		}
+		
+		
+		return g;
+	}
+	public static void dilatation(GraphMap g){
 		//check whether it is a good map
 		
 		if (!g.isGoodMap()){
-			throw new IllegalStateException("bad map!");
+			System.out.println("bad map!");
 		
 		}
 		//if it is a good map, dilatation is computed
 		else {
 			TrainTrack tt = new TrainTrack(g);
 			tt.trainTrackMap();
+			
+			if (tt.isIrreducible()) {
+				System.out.println( "Irreducible: yes, growth rate: "+IntMatrix.PFForm.format(tt.growthRate())+", char poly: "+IntMatrix.polyString(tt.transitionMatrix().reducedCharPoly()));
+				//
+				count++;
+			} else {
+				System.out.println(" Irreducible: no");
+			}
 
 			//			System.out.println(tt);
-			double q = tt.growthRate();
-			System.out.println("dilatation: "+q);
+			//double q = tt.growthRate();
+			//System.out.println("dilatation: "+q);
 		}
+	
 		
 	}
 	
