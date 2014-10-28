@@ -21,7 +21,7 @@ class Rational {
     Rational& operator=(const Rational& rhs);
     ~Rational();
     void get_mpq(mpq_t q);
-    double get_d();    
+    double get_d();
     void canonicalize();
     int d();
     int n();
@@ -49,8 +49,8 @@ class Rational {
     bool operator>(int other) const;
     bool operator==(const Rational& other) const;
     bool operator==(int other) const;
-    
-    
+
+
   friend std::ostream& operator<<(std::ostream& os, Rational r);
   friend Rational operator/(int a, const Rational& b);
 
@@ -65,4 +65,3 @@ int gcd(int a, int b);
 
 
 #endif
-
