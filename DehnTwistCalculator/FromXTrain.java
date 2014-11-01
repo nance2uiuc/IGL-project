@@ -11,7 +11,7 @@ import pbj.math.graph.train.*;
 import pbj.math.numerical.*;
 import gnu.getopt.*;
 import java.util.*;
-import DehnTwistCalculator.Stopwatch;
+import pbj.Stopwatch;
 
 /*
  * This program will use Xtrain and extract the "stretch factor" or "dilatation" from the output in an automated way.
@@ -69,7 +69,7 @@ public class FromXTrain {
       
   String [] s=new String [2];
   s[0]=S1;
-  s[1]=w;
+  s[1]=reverse("b0A0")+reverse("b1A0a1d1c0d0C0D1A1a0C0D0A0d0c0A0a1d1c0d0C0D1A1a0")+reverse(Inverse.inverse("b0A0"))+reverse(Inverse.inverse("B0a0d0A0b0D0"))+reverse("b1A0a1d1c0d0C0D1A1a0C0D0A0d0c0A0a1d1c0d0C0D1A1a0")+reverse(Inverse.inverse("b0A0"))+reverse("B0a0d0A0b0D0")+reverse(Inverse.inverse("b0A0"))+reverse("c0d0d1c0B0a0d0A0b0C0D1D0C0D1")+reverse("b0A0");
   //s[1]="d0c0d1c1d2C2";
   
   //Use the program in XTrain: DehnTwist
