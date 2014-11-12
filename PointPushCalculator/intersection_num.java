@@ -17,7 +17,8 @@ public class intersection_num {
 	String word = args[1];
 	int result = intNum(Integer.valueOf(genus),word);
 	String trans = UsToBranch(word);
-	System.out.println("Word "+word+" on genus "+genus+": translates to "+trans+"; intersections: "+result);
+	//	System.out.println("Word "+word+" on genus "+genus+": translates to "+trans+"; intersections: "+result);
+	System.out.println(result);
     }
 
     /** 
