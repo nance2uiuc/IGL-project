@@ -20,7 +20,7 @@ public class DataCollector {
  public static void main(String[] args) throws FileNotFoundException,IOException {
   // change the parameter here
   int genus = 2;//1. change the genus here
-  int len = 12;//2. change the length here
+  int len = 10;//2. change the length here
   int loop = 200;//3. number of data generated
   boolean intersect=false;//4. calculate the intersection or not
   boolean verbose=true;//5. print the number of data or not
