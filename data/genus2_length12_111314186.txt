@@ -1,0 +1,7 @@
+Genus: 2
+Length: 12
+Intersection: true
+Number of data: 200
+
+Genus,Length,Dilitation,isPseudoAnosov,Intersection_Number,Word
+2,12,7.113847543457438,true,21,y0y0y0z1Z0Y1y0Y0Z0Z0Z0Y0Y1
