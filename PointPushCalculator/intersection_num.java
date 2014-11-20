@@ -47,16 +47,33 @@ public class intersection_num {
 	} else if ( word.length() == 0 ){
 	    return "";
 	} else { // this is the case where the length is 2
-	    int start = 0;
-	    if ( word.substring(0,1).equals("z") ) { start = 97;}         // z0 starts at a = 97
-	    else if ( word.substring(0,1).equals("y") ) { start = 98;}    // y0 starts at b = 98
-	    else if ( word.substring(0,1).equals("Z") ) { start = 65;}    // Z0 starts at A = 65
-	    else if ( word.substring(0,1).equals("Y") ) { start = 66;}    // Y0 starts at B = 66
-	    else { 
-		String e ="'UsToBranch': input "+word+" doesn't start with 'z', 'y', 'Z', or 'Y'";
+	    /************************************************
+	     *      OLD CODE that was more general
+	     *      need to figure out how to adust to work for all genus
+	     ***************************************************************
+	     * int start = 0;
+	     * if ( word.substring(0,1).equals("z") ) { start = 97;}         // z0 starts at a = 97
+	     * else if ( word.substring(0,1).equals("y") ) { start = 98;}    // y0 starts at b = 98
+	     * else if ( word.substring(0,1).equals("Z") ) { start = 65;}    // Z0 starts at A = 65
+	     * else if ( word.substring(0,1).equals("Y") ) { start = 66;}    // Y0 starts at B = 66
+	     * else { 
+	     *	String e ="'UsToBranch': input "+word+" doesn't start with 'z', 'y', 'Z', or 'Y'";
+	     *	throw new IllegalArgumentException(e); 
+	     * }
+	     * return String.valueOf(Character.toChars(start+2*Integer.valueOf(word.substring(1))));
+	     */
+	    if ( word.equals("z0") ) {return "b";}
+	    else if ( word.equals("Z0") ) {return "B";}
+	    else if ( word.equals("z1") ) {return "cdC";}
+	    else if ( word.equals("Z1") ) {return "cDC";}
+	    else if ( word.equals("y0") ) {return "a";}
+	    else if ( word.equals("Y0") ) {return "A";}
+	    else if ( word.equals("y1") ) {return "c";}
+	    else if ( word.equals("Y1") ) {return "C";}
+	    else {
+		String e ="this ver of 'UsToBranch' can ONLY excpt input words in the letters 'z0', 'z1', 'y0', or 'y1' (or their capitals)";
 		throw new IllegalArgumentException(e); 
 	    }
-	    return String.valueOf(Character.toChars(start+2*Integer.valueOf(word.substring(1))));
 	}
     }
     
