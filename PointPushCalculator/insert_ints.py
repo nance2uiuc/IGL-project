@@ -14,7 +14,7 @@ overwrite = False
 input_file = sys.argv[1]
 #tempfile = NamedTemporaryFile(delete=not overwrite)
 tempfile = NamedTemporaryFile(delete=False)
-data_file = NamedTemporaryFile(delete=False)
+data_file = NamedTemporaryFile(delete=True)
 head_file = NamedTemporaryFile(delete=True)
 
 # Read the header information and the data information into 2 separate files
@@ -49,9 +49,8 @@ for row in dr:
     row['Intersection_Number']=i
     dw.writerow(row)
 
-   
 tempfile.close()
-shutil.move(tempfile.name, input_file+'--fixed')
+shutil.move(tempfile.name, input_file+'--withINT')
 
 sys.exit()
 
