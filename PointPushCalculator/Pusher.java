@@ -175,7 +175,7 @@ public class Pusher {
 		
 		//
 		//System.out.println("If you want to test function PtwGtw, DehnTwist_IGL.java, Inverse.java, TextIO.java is needed!");
-		String []test =new String [8];
+		/*String []test =new String [8];
 		test[0]="z0l";
 		test[1]="z0r";
 		test[2]="z1l";
@@ -193,7 +193,7 @@ public class Pusher {
 			System.out.println("Output from PtwGtw: "+PtwGtw(test[i])+"\n");
 		}
 		
-		
+		*/
 		//test for function Push
 		//Exception should be thrown
 		//String a="";		Push(a);

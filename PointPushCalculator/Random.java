@@ -1,5 +1,17 @@
 public class Random
 {
+	public static void main(String[] args){
+	    	System.out.println("What's the genus?");
+	    	int genus=TextIO.getlnInt();
+	    	
+	    	System.out.println("What's the length?");
+	    	int length=TextIO.getlnInt();
+	    	
+	    	String result=Random(genus,length);
+	    	System.out.println(result);
+	 }
+	 
+	 
     public static int random(int N)//random function: random(N)=n such that n is a random integer number in [0,N)
     {
       return (int) (Math.random() * N);
@@ -23,4 +35,6 @@ public class Random
       }
       return s;
     }
+    
+   
 }
